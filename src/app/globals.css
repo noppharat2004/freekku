@@ -1,0 +1,91 @@
+/* app/globals.css
+   Global styles, Tailwind imports, and custom design tokens.
+   ----------------------------------------------------------- */
+@import "tailwindcss";
+
+/* ── Custom CSS variables (design tokens) ─────────────────── */
+:root {
+  --color-shrine-primary:  #b94a3c;
+  --color-shrine-dark:     #8c3329;
+  --color-shrine-light:    #f5e6e4;
+  --color-shrine-accent:   #d4735c;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 2px 12px 0 rgba(0,0,0,0.08), 0 1px 3px 0 rgba(0,0,0,0.04);
+}
+
+/* ── Base resets ──────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f8f5f3;
+  font-family: 'Noto Sans Thai', 'Inter', system-ui, sans-serif;
+  min-height: 100dvh;
+  overscroll-behavior-y: none;
+}
+
+/* ── Custom scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1c4be; border-radius: 99px; }
+
+/* ── Utility: shrine brand color ─────────────────────────── */
+.text-shrine      { color: var(--color-shrine-primary); }
+.bg-shrine        { background-color: var(--color-shrine-primary); }
+.bg-shrine-light  { background-color: var(--color-shrine-light); }
+.border-shrine    { border-color: var(--color-shrine-primary); }
+
+/* ── Card base ────────────────────────────────────────────── */
+.card {
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  background: white;
+  overflow: hidden;
+}
+
+/* ── Skeleton shimmer animation ───────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #ede8e5 25%, #f5f1ef 50%, #ede8e5 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 0.5rem;
+}
+
+/* ── FAB pulse ring ───────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0  0px rgba(185, 74, 60, 0.4); }
+  70%  { box-shadow: 0 0 0 14px rgba(185, 74, 60, 0);   }
+  100% { box-shadow: 0 0 0  0px rgba(185, 74, 60, 0);   }
+}
+.fab-pulse {
+  animation: pulse-ring 2.5s infinite;
+}
+
+/* ── Slide-up modal animation ─────────────────────────────── */
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.animate-slide-up {
+  animation: slide-up 0.35s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+/* ── Fade-in ──────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease both;
+}
