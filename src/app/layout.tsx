@@ -6,12 +6,12 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ศาลาแจกของ — ของฟรี มหาวิทยาลัย',
+  title: 'สวัสดิการเจ้าพ่อมอ',
   description:
     'บอร์ดแจ้งของแจกฟรีจากศาลาแบบเรียลไทม์ อัพเดทสถานะได้ทันที ไม่ต้องรอแอดมินอนุมัติ',
   keywords: ['ของแจก', 'ศาลา', 'มหาวิทยาลัย', 'ฟรี', 'อาหาร', 'เครื่องดื่ม'],
   openGraph: {
-    title: 'ศาลาแจกของ — ของฟรี มหาวิทยาลัย',
+    title: 'สวัสดิการเจ้าพ่อมอ',
     description: 'บอร์ดแจ้งของแจกฟรีแบบเรียลไทม์',
     type: 'website',
   },
