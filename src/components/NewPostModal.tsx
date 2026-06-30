@@ -219,7 +219,6 @@ export default function NewPostModal({ onClose }: NewPostModalProps) {
                   ref={fileInputRef}
                   type="file"
                   accept="image/*"
-                  capture="environment" /* Opens rear camera directly on mobile */
                   onChange={handleImageSelect}
                   className="sr-only"
                   aria-hidden="true"
