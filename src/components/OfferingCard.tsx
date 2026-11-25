@@ -37,6 +37,25 @@ function timeAgo(dateStr: string): string {
   return `${hrs} ชั่วโมงที่แล้ว`;
 }
 
+/** Returns "HH:MM น." in Thai locale, e.g. "14:30 น." */
+function formatTime(dateStr: string): string {
+  return new Date(dateStr).toLocaleTimeString('th-TH', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    timeZone: 'Asia/Bangkok',
+  }) + ' น.';
+}
+
+/** Returns "D MMM" in Thai, e.g. "7 ม.ค." */
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString('th-TH', {
+    day: 'numeric',
+    month: 'short',
+    timeZone: 'Asia/Bangkok',
+  });
+}
+
 // ── Step type for the OutOfStock modal ──────────────────────────
 type ModalStep = 'locating' | 'capturing' | 'uploading' | 'done';
 
@@ -266,7 +285,11 @@ export default function OfferingCard({ offering }: OfferingCardProps) {
           {/* Timestamp */}
           <div className="flex items-center gap-1.5 text-stone-400 text-xs">
             <Clock className="w-3.5 h-3.5" aria-hidden="true" />
-            <time dateTime={offering.created_at}>{timeAgo(offering.created_at)}</time>
+            <time dateTime={offering.created_at}>
+              {formatDate(offering.created_at)} · {formatTime(offering.created_at)}
+              <span className="mx-1 text-stone-300">·</span>
+              {timeAgo(offering.created_at)}
+            </time>
           </div>
 
           {/* ── Status Update Button ──────────────────────────── */}
